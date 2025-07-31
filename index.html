@@ -290,20 +290,19 @@
             <h1>David Adafia</h1>
             <p class="subtitle">Building innovative web applications with modern technologies</p>
             <div class="tech-stack">
-                <span class="tech-badge">Ruby On Rails</span>
-                <span class="tech-badge">GitHub</span>
-                <span class="tech-badge">OpenAI API</span>
-                <span class="tech-badge">HTML/CSS/JS</span>
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">HTML/CSS</span>
                 <span class="tech-badge">WebAR</span>
-                <span class="tech-badge">PostgreSQL</span>
-                <span class="tech-badge">Heroku</span>
+                <span class="tech-badge">PWA</span>
             </div>
         </header>
 
         <section class="projects-section">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
-                <div class="project-card" onclick="openProject('pascology')">
+                <div class="project-card" onclick="openProject('pascology', this)">
                     <div class="project-icon">📊</div>
                     <h3 class="project-title">Pascology MIS</h3>
                     <p class="project-description">
@@ -321,7 +320,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" onclick="openProject('qr-attendance')">
+                <div class="project-card" onclick="openProject('qr-attendance', this)">
                     <div class="project-icon">📱</div>
                     <h3 class="project-title">QR Code Attendance</h3>
                     <p class="project-description">
@@ -339,7 +338,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" onclick="openProject('ar-treasure')">
+                <div class="project-card" onclick="openProject('ar-treasure', this)">
                     <div class="project-icon">🎮</div>
                     <h3 class="project-title">AR Treasure Hunt</h3>
                     <p class="project-description">
@@ -357,7 +356,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" onclick="openProject('exam-prep')">
+                <div class="project-card" onclick="openProject('exam-prep', this)">
                     <div class="project-icon">📚</div>
                     <h3 class="project-title">Past Questions Prep</h3>
                     <p class="project-description">
@@ -407,21 +406,23 @@
         });
 
         // Project click handlers
-        function openProject(projectId) {
+        function openProject(projectId, element) {
             const projectUrls = {
-                'pascology': 'https://pascology.com/', // Replace with actual URLs
-                'qr-attendance': '#',
-                'ar-treasure': '#',
-                'exam-prep': '#'
+                'pascology': 'https://pascology.com/',
+                'qr-attendance': '#', // Replace with your actual URL
+                'ar-treasure': '#', // Replace with your actual URL
+                'exam-prep': '#' // Replace with your actual URL
             };
             
             // Add a nice click effect
-            event.currentTarget.style.transform = 'scale(0.98)';
+            element.style.transform = 'scale(0.98)';
             setTimeout(() => {
-                event.currentTarget.style.transform = '';
-                // Uncomment when you have actual project URLs
-                // window.open(projectUrls[projectId], '_blank');
-                alert(`Opening ${projectId} project...`);
+                element.style.transform = '';
+                if (projectUrls[projectId] !== '#') {
+                    window.open(projectUrls[projectId], '_blank');
+                } else {
+                    alert(`${projectId} project URL coming soon!`);
+                }
             }, 150);
         }
 
